@@ -1,0 +1,10 @@
+{
+  "name": "ng2-webpack-test",
+  "dependencies": {
+    "es6-promise": "registry:npm/es6-promise#3.0.0+20160211003958"
+  },
+  "globalDependencies": {
+    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+    "node": "registry:env/node#6.0.0+20160622202520"
+  }
+}
