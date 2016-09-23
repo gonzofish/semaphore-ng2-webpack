@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <div *ngFor="let question of questions" class="row">
+        <dynamic-question [form]="formGroup"
+            [question]="question"></dynamic-question>
+    </div>
+
+    <div class="row">
+        <button type="submit" [disabled]="!formGroup.valid">Save</button>
+    </div>
+
+    <pre *ngIf="payload">{{ payload }}</pre>
+</form>

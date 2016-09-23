@@ -13,6 +13,7 @@ module.exports = config => {
         phantomJsLauncher: {
             exitOnResourceError: true
         },
+        port: 9876,
         preprocessors: {
             'karma.entry.js': ['webpack', 'sourcemap']
         },

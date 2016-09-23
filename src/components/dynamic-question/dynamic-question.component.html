@@ -1,0 +1,28 @@
+<div class="question" [formGroup]="form" [ngSwitch]="question.controlType">
+    <label [attr.for]="question.id">{{ question.label }}</label>
+
+    <input class="control" [id]="question.id" [type]="question.type"
+        *ngSwitchCase="'text-input'" [formControlName]="question.id">
+
+    <select class="control" [id]="question.id"
+        *ngSwitchCase="'select'" [formControlName]="question.id">
+        <option [value]="answer.value" *ngFor="let answer of question.options">
+            {{ answer.label }}
+        </option>
+    </select>
+
+    <textarea class="control" [id]="question.id"
+        *ngSwitchCase="'textarea'" [formControlName]="question.id"></textarea>
+
+    <div class="radio-group" *ngSwitchCase="'radio'">
+        <span class="radio" *ngFor="let answer of question.options">
+            <input type="radio" [id]="question.id + answer.value" [value]="answer.value"
+                [formControlName]="question.id">
+            <label [attr.for]="question.id + answer.value">{{ answer.label }}</label>
+        </span>
+    </div>
+
+    <div class="error" *ngIf="!isValid">
+        This question is required!
+    </div>
+</div>
