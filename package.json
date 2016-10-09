@@ -7,7 +7,8 @@
     "lint": "tslint ./src/**/*.ts",
     "start": "webpack-dev-server --config ./webpack/webpack.dev.js",
     "test": "karma start ./karma/karma.conf.js",
-    "test:headless": "karma start ./karma/karma.conf.js --browsers PhantomJS"
+    "test:headless": "karma start ./karma/karma.conf.js --browsers PhantomJS --autoWatch=true --singleRun=false",
+    "test:single": "karma start ./karma/karma.conf.js --browsers PhantomJS"
   },
   "keywords": [],
   "author": "",
