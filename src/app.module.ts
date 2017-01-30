@@ -14,12 +14,20 @@ import { RestService } from './services/rest.service';
 import {
     AppComponent,
     DynamicFormComponent,
-    DynamicQuestionComponent
+    DynamicQuestionComponent,
+    FormListComponent,
+    FormViewerComponent
 } from './components';
 
 @NgModule({
     bootstrap: [ AppComponent ],
-    declarations: [ AppComponent, DynamicFormComponent, DynamicQuestionComponent ],
+    declarations: [
+        AppComponent,
+        DynamicFormComponent,
+        DynamicQuestionComponent,
+        FormListComponent,
+        FormViewerComponent
+    ],
     imports: [
         AppRoutingModule,
         BrowserModule,
@@ -27,6 +35,9 @@ import {
         InMemoryWebApiModule.forRoot(FauxFormsService),
         ReactiveFormsModule
     ],
-    providers: [ FormService, RestService ]
+    providers: [
+        FormService,
+        RestService
+    ]
 })
 export class AppModule {}

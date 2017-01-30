@@ -1,0 +1,19 @@
+<table border="1" cellpadding="2" cellspacing="0" style="width: 40%">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Questions</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let form of forms">
+            <td>{{ form.title }}</td>
+            <td>{{ form.questions.length }}</td>
+            <td>
+                <button (click)="displayForm(form.id)">Display</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

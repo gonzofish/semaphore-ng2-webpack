@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { FormData } from '../models';
 
+import { BehaviorSubject } from 'rxjs/Rx';
+
 @Injectable()
 export class FormService {
-    private forms: Array<FormData> = [];
+    forms = new BehaviorSubject<Array<FormData>>([]);
 
     setForms(newForms: Array<FormData>) {
-        this.forms = newForms;
-    }
-
-    getAllForms() {
-        return this.forms;
+        this.forms.next(newForms);
     }
 
     getForm(formId: number): FormData {
-        let form = this.forms.find((form) => form.id === formId);
+        let form = this.forms.value.find((form) => form.id === formId);
 
         if (!form) {
             form = null;

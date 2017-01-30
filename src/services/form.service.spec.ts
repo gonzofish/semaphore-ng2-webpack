@@ -1,5 +1,16 @@
+import { async, TestBed } from '@angular/core/testing';
+
+import { BehaviorSubject } from 'rxjs/Rx';
+
 import { FormService } from './form.service';
 import { FormData } from '../models';
+
+class MockSubject {
+    constructor(defaultValue: any) {
+        console.info('hey yall');
+    }
+    next(value: any) {}
+}
 
 describe('Service: FormService', () => {
     const testForms: Array<FormData> = [
@@ -57,14 +68,16 @@ describe('Service: FormService', () => {
         service = new FormService();
     });
 
-    it('#getAllForms should, by default, return an empty array', () => {
-        expect(service.getAllForms()).toEqual([]);
+    it('should have a `forms` attribute that is a BehaviorSubject', () => {
+        expect(service.forms instanceof BehaviorSubject).toBe(true);
     });
 
-    it('#setForms should set the `forms` attribute', () => {
+
+    it('#setForms should call forms.next', () => {
+        spyOn(service.forms, 'next');
         service.setForms(testForms);
 
-        expect(service.getAllForms()).toEqual(testForms);
+        expect(service.forms.next).toHaveBeenCalledWith(testForms);
     });
 
     describe('#getForm', () => {

@@ -4,7 +4,7 @@ import {
 
 import { FormViewerComponent } from './form-viewer.component';
 
-describe('Component: DynamicFormComponent', () => {
+describe('Component: FormViewerComponent', () => {
     let component: FormViewerComponent;
 
     beforeEach(() => {
