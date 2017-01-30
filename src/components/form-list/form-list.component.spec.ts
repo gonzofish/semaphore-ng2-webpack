@@ -40,11 +40,11 @@ describe('Component: FormListComponent', () => {
         expect(component).toBeDefined();
     });
 
-    describe('#displayReport', () => {
+    describe('#displayForm', () => {
         it('should call Router.navigateByUrl("forms/:id") with the ID of the form', inject([Router], (router: Router) => {
             const spy = spyOn(router, 'navigateByUrl');
 
-            component.displayReport(23);
+            component.displayForm(23);
 
             const url = spy.calls.first().args[0];
 
