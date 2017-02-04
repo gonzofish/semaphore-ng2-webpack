@@ -17,8 +17,4 @@ export class AppComponent {
             this.formService.setForms(forms);
         });
     }
-
-    selectForm(formId: number) {
-        this.selectedForm = this.formService.getForm(formId);
-    }
 }
