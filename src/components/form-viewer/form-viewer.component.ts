@@ -13,17 +13,32 @@ import { FormData } from '../../models';
     styles: []
 })
 export class FormViewerComponent implements OnInit {
-    selectedForm: FormData;
+    private get _blankForm(): FormData {
+        return {
+            id: null,
+            questions: [],
+            title: ''
+        };
+    }
+
+    form: FormData = this._blankForm;
 
     constructor(private formService: FormService, private route: ActivatedRoute) {}
 
     ngOnInit() {
-        this.route.params.map((param) => parseInt(param['id']))
-            .forEach((id: number) => this.selectForm(id));
+        this.formService.forms.subscribe(() => {
+            this.route.params.map((param) => parseInt(param['id']))
+                .forEach((id: number) => this.selectForm(id));
+        });
     }
 
     private selectForm(id: number) {
-        console.info(`Id: ${id}`);
-        this.selectedForm = this.formService.getForm(id);
+        const selectedForm = this.formService.getForm(id);
+
+        if (selectedForm) {
+            this.form = selectedForm;
+        } else {
+            this.form = this._blankForm;
+        }
     }
 }
