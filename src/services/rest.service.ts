@@ -4,7 +4,6 @@ import {
     Response
 } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { FormData } from '../models';
@@ -21,20 +20,13 @@ export class RestService {
                     if (response.ok) {
                         return json.data as FormData[];
                     } else {
-                        return this.logError(json.data);
+                        return this.logError(json);
                     }
                 });
     }
 
     private logError(error: any) {
-        try {
-            error = error.json();
-            console.error(error.error);
-        } catch(e) {
-            // ...ignore
-            console.error(error);
-        }
-
-        return Observable.throw(error);
+        console.error(error.error);
+        throw error;
     }
 }

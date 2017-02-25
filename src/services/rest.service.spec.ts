@@ -49,7 +49,7 @@ describe('Service: RestService', () => {
 
     function setupConnections(backend: MockBackend, options: any) {
         backend.connections.subscribe((connection: MockConnection) => {
-            if (connection.request.url === '/api/form') {
+            if (connection.request.url === 'api/forms') {
                 const responseOptions = new ResponseOptions(options);
                 const response = new Response(responseOptions);
 
@@ -60,23 +60,25 @@ describe('Service: RestService', () => {
 
     it('should return the list of forms from the server on success', () => {
         setupConnections(backend, {
-            body: [
-                {
-                    id: 1,
-                    questions: [],
-                    title: 'Pizza'
-                },
-                {
-                    id: 4,
-                    questions: [],
-                    title: 'Burrito'
-                },
-                {
-                    id: 2,
-                    questions: [],
-                    title: 'Cheeseburger'
-                }
-            ],
+            body: {
+                data: [
+                    {
+                        id: 1,
+                        questions: [],
+                        title: 'Pizza'
+                    },
+                    {
+                        id: 4,
+                        questions: [],
+                        title: 'Burrito'
+                    },
+                    {
+                        id: 2,
+                        questions: [],
+                        title: 'Cheeseburger'
+                    }
+                ]
+            },
             status: 200
         });
 
